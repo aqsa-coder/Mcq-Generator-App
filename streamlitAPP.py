@@ -6,8 +6,9 @@ from dotenv import load_dotenv
 from src.mcqgenerator.utils import read_file,get_table_data
 import streamlit as st
 from langchain.callbacks import get_openai_callback
-# from src.mcqgenerator.MCQGenerator import generate_evaluate_chain
+from src.mcqgenerator.MCQGenerator import generate_evaluate_chain
 from src.mcqgenerator.logger import logging
+
 
 
 #loading json file
@@ -71,8 +72,6 @@ with st.form("user_input"):
                             df = pd.DataFrame(table_data)
                             df.index=df.index+1
                             st.table(df)
-                            # Display the review in the text box as well
-                            st.text_area(label="reviews",value=response["reviews"])
                         else:
                             st.error("Error in the table data")
                 else:
